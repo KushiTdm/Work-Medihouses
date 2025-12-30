@@ -1,0 +1,8 @@
+# robots.txt pour Hostel Paradis
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://hostal-paradis.netlify.app/sitemap.xml
