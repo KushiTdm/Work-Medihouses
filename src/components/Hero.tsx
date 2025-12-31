@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsVisible(true);
@@ -33,16 +35,16 @@ export default function Hero() {
         }`}
       >
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">
-          Bienvenido a Hostal República
+          {t('hero.title')}
         </h1>
         <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-gray-200">
-          Tu hogar en Santiago de Chile
+          {t('hero.subtitle')}
         </p>
         <button
           onClick={scrollToRooms}
           className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg"
         >
-          Descubrir nuestras habitaciones
+          {t('hero.cta')}
         </button>
       </div>
     </section>

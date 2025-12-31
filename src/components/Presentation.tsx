@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Heart, MapPin, Users } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Presentation() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,10 +36,9 @@ export default function Presentation() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Una Experiencia Única</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('presentation.title')}</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Hostal República te ofrece mucho más que un simple alojamiento. Disfruta de una atmósfera cálida
-            y acogedora, donde cada detalle ha sido pensado para tu comodidad y bienestar.
+            {t('presentation.description')}
           </p>
         </div>
 
@@ -51,9 +52,9 @@ export default function Presentation() {
             <div className="flex justify-center mb-4">
               <Heart className="h-12 w-12 text-red-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Acogida Cálida</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">{t('presentation.warmth.title')}</h3>
             <p className="text-gray-600">
-              Nuestro equipo dedicado te recibe con una sonrisa y te acompaña durante toda tu estadía.
+              {t('presentation.warmth.description')}
             </p>
           </div>
 
@@ -66,9 +67,9 @@ export default function Presentation() {
             <div className="flex justify-center mb-4">
               <MapPin className="h-12 w-12 text-red-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Ubicación Ideal</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">{t('presentation.location.title')}</h3>
             <p className="text-gray-600">
-              Ubicado en Abdón Cifuentes 73, en un sector tranquilo y de fácil acceso con excelente conectividad.
+              {t('presentation.location.description')}
             </p>
           </div>
 
@@ -81,9 +82,9 @@ export default function Presentation() {
             <div className="flex justify-center mb-4">
               <Users className="h-12 w-12 text-red-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Ambiente Acogedor</h3>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">{t('presentation.atmosphere.title')}</h3>
             <p className="text-gray-600">
-              Perfecto tanto para viajeros que buscan descansar como para quienes necesitan movilizarse por trabajo o turismo.
+              {t('presentation.atmosphere.description')}
             </p>
           </div>
         </div>
