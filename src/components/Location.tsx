@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { MapPin, Train, Utensils, ShoppingBag } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Location() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,18 +31,18 @@ export default function Location() {
   const nearbyAttractions = [
     {
       icon: <Train className="h-6 w-6" />,
-      name: "Metro República",
-      distance: "2 min caminando"
+      name: t('location.metro'),
+      distance: t('location.walking2')
     },
     {
       icon: <Utensils className="h-6 w-6" />,
-      name: "Restaurantes y cafés",
-      distance: "3 min caminando"
+      name: t('location.commercial').split(' ')[0] + ' ' + t('location.commercial').split(' ')[1],
+      distance: t('location.walking3')
     },
     {
       icon: <ShoppingBag className="h-6 w-6" />,
-      name: "Zona comercial",
-      distance: "5 min caminando"
+      name: t('location.commercial'),
+      distance: t('location.walking5')
     }
   ];
 
@@ -53,10 +55,10 @@ export default function Location() {
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Ubicación Perfecta
+            {t('location.title')}
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            En el corazón de Santiago, con excelente conectividad y acceso a servicios
+            {t('location.subtitle')}
           </p>
         </div>
 
@@ -87,7 +89,7 @@ export default function Location() {
                   className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-xl transition-all transform hover:scale-105 shadow-lg"
                 >
                   <MapPin className="h-5 w-5" />
-                  Ver en Google Maps
+                  {t('location.viewOnMaps')}
                 </button>
               </div>
             </div>
@@ -107,25 +109,23 @@ export default function Location() {
                   <MapPin className="h-6 w-6 text-red-600" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Hostal República</h3>
-                  <p className="text-gray-700 font-semibold">Abdón Cifuentes 73</p>
-                  <p className="text-gray-600">Santiago, Chile</p>
-                  <p className="text-gray-600">Código postal: 8320200</p>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{t('location.hostalName')}</h3>
+                  <p className="text-gray-700 font-semibold">{t('location.address')}</p>
+                  <p className="text-gray-600">{t('location.city')}</p>
+                  <p className="text-gray-600">{t('location.postalCode')}</p>
                 </div>
               </div>
               
               <div className="border-t border-gray-200 pt-6">
                 <p className="text-gray-600 leading-relaxed">
-                  Ubicación estratégica con rápido acceso al centro de la ciudad, transporte público 
-                  y principales puntos de interés. Zona segura y tranquila, ideal para descansar o 
-                  movilizarse con facilidad.
+                  {t('location.description1')}
                 </p>
               </div>
             </div>
 
             {/* Nearby Attractions */}
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-              <h3 className="text-xl font-bold text-gray-800 mb-6">Puntos de Interés Cercanos</h3>
+              <h3 className="text-xl font-bold text-gray-800 mb-6">{t('location.nearbyAttractions')}</h3>
               <div className="space-y-4">
                 {nearbyAttractions.map((attraction, index) => (
                   <div

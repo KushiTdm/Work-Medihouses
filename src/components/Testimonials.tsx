@@ -1,31 +1,37 @@
 import { useEffect, useRef, useState } from 'react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Testimonial {
   name: string;
-  text: string;
+  textEs: string;
+  textEn: string;
   rating: number;
 }
 
 const testimonials: Testimonial[] = [
   {
     name: "Carlos R.",
-    text: "Muy buena ubicación y fácil acceso. El sistema de entrada con código es práctico y seguro. Todo funcionaba perfecto durante la estadía.",
+    textEs: "Muy buena ubicación y fácil acceso. El sistema de entrada con código es práctico y seguro. Todo funcionaba perfecto durante la estadía.",
+    textEn: "Very good location and easy access. The code entry system is practical and secure. Everything worked perfectly during the stay.",
     rating: 5
   },
   {
     name: "Andrea L.",
-    text: "El lugar es acogedor y está bien equipado. La cama es muy cómoda y la limpieza impecable. La atención fue rápida y cordial.",
+    textEs: "El lugar es acogedor y está bien equipado. La cama es muy cómoda y la limpieza impecable. La atención fue rápida y cordial.",
+    textEn: "The place is cozy and well equipped. The bed is very comfortable and the cleanliness impeccable. The service was quick and friendly.",
     rating: 5
   },
   {
     name: "Javier M.",
-    text: "Una muy buena experiencia. Espacios amplios, buena iluminación y un ambiente silencioso. Relación precio–calidad excelente.",
+    textEs: "Una muy buena experiencia. Espacios amplios, buena iluminación y un ambiente silencioso. Relación precio–calidad excelente.",
+    textEn: "A very good experience. Spacious rooms, good lighting and a quiet atmosphere. Excellent value for money.",
     rating: 5
   },
   {
     name: "Paula S.",
-    text: "Me sentí muy cómoda y segura durante mi estadía. Todo estaba tal como se describe, limpio y bien cuidado. Recomendado 100%",
+    textEs: "Me sentí muy cómoda y segura durante mi estadía. Todo estaba tal como se describe, limpio y bien cuidado. Recomendado 100%",
+    textEn: "I felt very comfortable and safe during my stay. Everything was as described, clean and well maintained. 100% recommended",
     rating: 5
   }
 ];
@@ -34,6 +40,7 @@ export default function Testimonials() {
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -81,9 +88,9 @@ export default function Testimonials() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Lo Que Dicen Nuestros Huéspedes</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('testimonials.title')}</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            La satisfacción de nuestros visitantes es nuestra mejor carta de presentación
+            {t('testimonials.subtitle')}
           </p>
         </div>
 
@@ -125,7 +132,7 @@ export default function Testimonials() {
                       ))}
                     </div>
                     <p className="text-gray-700 text-lg sm:text-xl mb-6 italic text-center leading-relaxed">
-                      "{testimonial.text}"
+                      "{language === 'es' ? testimonial.textEs : testimonial.textEn}"
                     </p>
                     <p className="text-gray-800 font-semibold text-center text-lg">
                       — {testimonial.name}

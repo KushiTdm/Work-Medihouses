@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { rooms } from '../data/rooms';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface RoomsOverviewProps {
   onRoomClick: (roomId: number) => void;
@@ -11,6 +12,7 @@ export default function RoomsOverview({ onRoomClick }: RoomsOverviewProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(4);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -84,9 +86,9 @@ export default function RoomsOverview({ onRoomClick }: RoomsOverviewProps) {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Nuestras Habitaciones</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">{t('rooms.title')}</h2>
           <p className="text-lg text-gray-600">
-            Descubre nuestras habitaciones confortables y acogedoras, adaptadas a todas tus necesidades
+            {t('rooms.subtitle')}
           </p>
         </div>
 
@@ -100,7 +102,7 @@ export default function RoomsOverview({ onRoomClick }: RoomsOverviewProps) {
                 className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-all ${
                   currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                 }`}
-                aria-label="Anterior"
+                aria-label={t('rooms.previous')}
               >
                 <ChevronLeft className="h-6 w-6 text-gray-800" />
               </button>
@@ -111,7 +113,7 @@ export default function RoomsOverview({ onRoomClick }: RoomsOverviewProps) {
                 className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition-all ${
                   currentIndex >= maxIndex ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                 }`}
-                aria-label="Siguiente"
+                aria-label={t('rooms.next')}
               >
                 <ChevronRight className="h-6 w-6 text-gray-800" />
               </button>
@@ -152,14 +154,14 @@ export default function RoomsOverview({ onRoomClick }: RoomsOverviewProps) {
 
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-2xl font-bold text-red-600">${room.price.toLocaleString('es-CL')}</span>
-                        <span className="text-gray-500 text-sm">por noche</span>
+                        <span className="text-gray-500 text-sm">{t('rooms.perNight')}</span>
                       </div>
 
                       <button
                         onClick={() => onRoomClick(room.id)}
                         className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center justify-center"
                       >
-                        Ver los detalles
+                        {t('rooms.viewDetails')}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </button>
                     </div>
@@ -181,7 +183,7 @@ export default function RoomsOverview({ onRoomClick }: RoomsOverviewProps) {
                       ? 'bg-red-600 w-8'
                       : 'bg-gray-300 hover:bg-gray-400'
                   }`}
-                  aria-label={`Ir a la página ${index + 1}`}
+                  aria-label={`${t('rooms.next')} ${index + 1}`}
                 />
               ))}
             </div>

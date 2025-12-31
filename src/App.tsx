@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { LanguageProvider } from './contexts/LanguageContext';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import RoomDetail from './components/RoomDetail';
@@ -115,16 +116,18 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar onNavigate={handleNavigate} />
-      {currentView === 'home' && <HomePage onRoomClick={handleRoomClick} />}
-      {currentView === 'room-detail' && selectedRoomId && (
-        <>
-          <RoomDetail roomId={selectedRoomId} onBack={handleBackToHome} />
-          <WhatsAppButton />
-        </>
-      )}
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-white">
+        <Navbar onNavigate={handleNavigate} forceScrolled={currentView === 'room-detail'} />
+        {currentView === 'home' && <HomePage onRoomClick={handleRoomClick} />}
+        {currentView === 'room-detail' && selectedRoomId && (
+          <>
+            <RoomDetail roomId={selectedRoomId} onBack={handleBackToHome} />
+            <WhatsAppButton />
+          </>
+        )}
+      </div>
+    </LanguageProvider>
   );
 }
 

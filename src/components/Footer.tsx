@@ -1,6 +1,9 @@
 import { Facebook, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Footer() {
+  const { t, language } = useLanguage();
+
   return (
     <footer id="contact" className="bg-gray-800 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,40 +17,40 @@ export default function Footer() {
               />
             </div>
             <p className="text-gray-300 text-sm">
-              Especialistas en departamentos amoblados
+              {t('footer.specialists')}
             </p>
             <p className="text-gray-300 text-sm mt-2">
-              Hostal República - Tu hogar en Santiago
+              {t('footer.tagline')}
             </p>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="#hero" className="text-gray-300 hover:text-red-400 transition-colors">
-                  Inicio
+                  {t('nav.home')}
                 </a>
               </li>
               <li>
                 <a href="#rooms" className="text-gray-300 hover:text-red-400 transition-colors">
-                  Nuestras Habitaciones
+                  {t('nav.rooms')}
                 </a>
               </li>
               <li>
                 <a href="#cta" className="text-gray-300 hover:text-red-400 transition-colors">
-                  Contacto
+                  {t('nav.contact')}
                 </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.contact')}</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 text-red-400 flex-shrink-0" />
-                <span className="text-gray-300">Abdón Cifuentes 73, Santiago, Chile</span>
+                <span className="text-gray-300">{t('location.address')}, {t('location.city')}</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2 text-red-400 flex-shrink-0" />
@@ -57,15 +60,35 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-2 text-red-400 flex-shrink-0" />
-                <a href="mailto:stokcerpropiedades@hotmail.com" className="text-gray-300 hover:text-red-400 transition-colors">
+                <button 
+                  onClick={() => {
+                    const email = 'stokcerpropiedades@hotmail.com';
+                    const subject = language === 'es' 
+                      ? 'Consulta sobre habitaciones - Hostal República'
+                      : 'Room inquiry - Hostal República';
+                    const body = language === 'es'
+                      ? `Hola,
+
+Vi su página web y me interesa reservar una habitación en Hostal República.
+
+¡Muchas gracias!`
+                      : `Hello,
+
+I saw your website and I'm interested in booking a room at Hostal República.
+
+Thank you!`;
+                    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  }}
+                  className="text-gray-300 hover:text-red-400 transition-colors text-left"
+                >
                   stokcerpropiedades@hotmail.com
-                </a>
+                </button>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Síguenos</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.followUs')}</h4>
             <div className="flex space-x-4">
               <a
                 href="https://web.facebook.com/profile.php?id=100092710350126"
@@ -88,7 +111,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} Medihouses - Hostal República. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Medihouses - Hostal República. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>
