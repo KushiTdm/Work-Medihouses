@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <div className="mb-4">
               <img 
-                src="/Logo1.jpeg" 
+                src="/Logo2.png" 
                 alt="Medihouses Logo" 
                 className="h-20 w-auto"
               />
