@@ -1,63 +1,80 @@
-import { MessageCircle, Phone, Mail } from 'lucide-react';
+import { MessageCircle, Phone, Mail, ArrowRight } from 'lucide-react';
 
 export default function CallToAction() {
   const handleWhatsAppClick = () => {
     const phoneNumber = '56933903744';
     const message = encodeURIComponent(
-      '¡Hola! Me gustaría reservar una habitación en Hostal República. ¿Podrían ayudarme con la disponibilidad?'
+      '¡Hola! 👋 Vi su página web y me interesa reservar una habitación en Hostal República.\n\n¿Podrían ayudarme? ¡Gracias! 😊'
     );
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };
 
   return (
-    <section className="py-16 bg-gradient-to-r from-red-600 to-red-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center text-white">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+    <section id="cta" className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-red-100 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-50 rounded-full opacity-30 translate-x-1/3 translate-y-1/3"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             ¿Listo para tu estadía en Santiago?
           </h2>
-          <p className="text-xl mb-8 text-red-100 max-w-3xl mx-auto">
-            Reserva ahora y disfruta de nuestras habitaciones confortables en el corazón de Santiago. 
-            ¡Te esperamos con la mejor atención!
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Reserva ahora y disfruta de nuestras habitaciones confortables en el corazón de Santiago
           </p>
+        </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+          {/* WhatsApp Card */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+            <div className="flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6 mx-auto">
+              <MessageCircle className="h-8 w-8 text-green-600" />
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 text-center">WhatsApp 24/7</h3>
+            <p className="text-gray-600 text-center mb-6">
+              Respuesta inmediata y atención personalizada
+            </p>
             <button
               onClick={handleWhatsAppClick}
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-2xl flex items-center gap-2 text-lg"
+              className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-xl transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
             >
-              <MessageCircle className="h-6 w-6" />
               Reservar por WhatsApp
+              <ArrowRight className="h-5 w-5" />
             </button>
-
-            
-            <a href="tel:+56933903744"
-              className="bg-white hover:bg-gray-100 text-red-600 font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-2xl flex items-center gap-2 text-lg"
-            >
-              <Phone className="h-6 w-6" />
-              Llamar Ahora
-            </a>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
-              <MessageCircle className="h-10 w-10 mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">WhatsApp 24/7</h3>
-              <p className="text-red-100 text-sm">Respuesta inmediata</p>
+          {/* Phone Card */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+            <div className="flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-6 mx-auto">
+              <Phone className="h-8 w-8 text-red-600" />
             </div>
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 text-center">Llamar Ahora</h3>
+            <p className="text-gray-600 text-center mb-6">
+              Atención telefónica directa
+            </p>
+            <a 
+              href="tel:+56933903744"
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-xl transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+            >
+              +56 9 3390 3744
+              <ArrowRight className="h-5 w-5" />
+            </a>
+          </div>
+        </div>
 
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
-              <Phone className="h-10 w-10 mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Atención Telefónica</h3>
-              <p className="text-red-100 text-sm">+56 9 3390 3744</p>
-            </div>
-
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6">
-              <Mail className="h-10 w-10 mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-red-100 text-sm">stokcerpropiedades@hotmail.com</p>
-            </div>
+        {/* Email contact */}
+        <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+          <div className="flex items-center justify-center gap-3 text-gray-600">
+            <Mail className="h-5 w-5 text-red-600" />
+            <span className="font-medium">Email:</span>
+            <a 
+              href="mailto:stokcerpropiedades@hotmail.com" 
+              className="text-red-600 hover:text-red-700 transition-colors"
+            >
+              stokcerpropiedades@hotmail.com
+            </a>
           </div>
         </div>
       </div>

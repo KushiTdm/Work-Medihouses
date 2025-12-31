@@ -6,7 +6,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Medihouses</h3>
+            <div className="mb-4">
+              <img 
+                src="/Logo1.jpeg" 
+                alt="Medihouses Logo" 
+                className="h-20 w-auto"
+              />
+            </div>
             <p className="text-gray-300 text-sm">
               Especialistas en departamentos amoblados
             </p>
@@ -29,8 +35,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#location" className="text-gray-300 hover:text-red-400 transition-colors">
-                  Ubicación
+                <a href="#cta" className="text-gray-300 hover:text-red-400 transition-colors">
+                  Contacto
                 </a>
               </li>
             </ul>

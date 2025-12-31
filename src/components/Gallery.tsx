@@ -4,23 +4,27 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 const galleryImages = [
   {
     url: '/between-doors.png',
-    title: 'Habitación Doble Estándar',
-    description: 'Ambiente acogedor y confortable'
+    title: 'Espacio Común Luminoso',
+    description: 'Área común amplia y muy luminosa, perfecta para relajarse',
+    alt: 'Espacio común luminoso y limpio del Hostal República Santiago - Zona de estar confortable'
   },
   {
     url: '/common-area.png',
-    title: 'Common area',
-    description: 'Perfecta para viajeros solos'
+    title: 'Área de Comedor',
+    description: 'Espacio de restauración equipado con mesas y sillas',
+    alt: 'Comedor común del Hostal República - Mesa y sillas para huéspedes'
   },
   {
     url: '/entrance.png',
-    title: 'Entrance',
-    description: 'Ideal para amigos'
+    title: 'Puertas de las Habitaciones',
+    description: 'Acceso a las habitaciones decorado con flores',
+    alt: 'Puertas decoradas de las habitaciones del Hostal República Santiago'
   },
    {
     url: '/kitchen.jpeg',
-    title: 'Kitchen',
-    description: 'Vista exterior del Hostal República'
+    title: 'Cocina Equipada',
+    description: 'Cocina completa disponible para los huéspedes',
+    alt: 'Cocina equipada del Hostal República - Electrodomésticos y utensilios disponibles'
   }
 ];
 
@@ -95,7 +99,7 @@ export default function Gallery() {
         >
           <h2 className="text-4xl font-bold text-gray-800 mb-4">Galería de Fotos</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Descubre nuestras instalaciones y habitaciones
+            Descubre nuestras instalaciones y espacios comunes
           </p>
         </div>
 
@@ -112,7 +116,7 @@ export default function Gallery() {
               <div className="aspect-square">
                 <img
                   src={image.url}
-                  alt={image.title}
+                  alt={image.alt}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
@@ -132,6 +136,7 @@ export default function Gallery() {
             <button
               onClick={closeLightbox}
               className="absolute top-4 right-4 text-white hover:text-red-500 transition-colors z-10"
+              aria-label="Fermer"
             >
               <X className="h-8 w-8" />
             </button>
@@ -139,6 +144,7 @@ export default function Gallery() {
             <button
               onClick={prevImage}
               className="absolute left-4 text-white hover:text-red-500 transition-colors z-10"
+              aria-label="Image précédente"
             >
               <ChevronLeft className="h-12 w-12" />
             </button>
@@ -146,6 +152,7 @@ export default function Gallery() {
             <button
               onClick={nextImage}
               className="absolute right-4 text-white hover:text-red-500 transition-colors z-10"
+              aria-label="Image suivante"
             >
               <ChevronRight className="h-12 w-12" />
             </button>
@@ -153,7 +160,7 @@ export default function Gallery() {
             <div className="max-w-6xl max-h-[90vh] mx-auto px-4">
               <img
                 src={galleryImages[selectedImage].url}
-                alt={galleryImages[selectedImage].title}
+                alt={galleryImages[selectedImage].alt}
                 className="max-w-full max-h-[80vh] object-contain mx-auto"
               />
               <div className="text-center text-white mt-4">

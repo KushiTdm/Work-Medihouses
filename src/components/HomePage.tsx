@@ -14,7 +14,7 @@ interface HomePageProps {
 
 export default function HomePage({ onRoomClick }: HomePageProps) {
   return (
-    <div className="pt-16">
+    <div>
       <Hero />
       <Presentation />
       <RoomsOverview onRoomClick={onRoomClick} />

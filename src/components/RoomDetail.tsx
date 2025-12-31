@@ -41,7 +41,7 @@ export default function RoomDetail({ roomId, onBack }: RoomDetailProps) {
   const handleWhatsAppClick = () => {
     const phoneNumber = '56933903744';
     const message = encodeURIComponent(
-      room.whatsappMessage || `Hola, me gustaría reservar la ${room.name}. ¿Podrían confirmarme disponibilidad?`
+      `¡Hola! 👋 Vengo desde su página web.\n\nMe interesa reservar la *${room.name}*\n💰 Precio: $${room.price.toLocaleString('es-CL')}/noche\n\n¿Podrían confirmarme:\n✓ Disponibilidad de fechas\n✓ Forma de pago\n✓ Check-in y check-out\n\n¡Muchas gracias! 😊`
     );
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
