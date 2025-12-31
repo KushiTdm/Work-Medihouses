@@ -10,13 +10,13 @@ function App() {
   const [currentView, setCurrentView] = useState<View>('home');
   const [selectedRoomId, setSelectedRoomId] = useState<number | null>(null);
 
-  // Fonction pour mettre à jour les meta tags SEO
+  // Función para actualizar los meta tags SEO
   const updateMetaTags = (roomId: number | null) => {
     if (roomId) {
       const room = rooms.find((r) => r.id === roomId);
       if (room) {
-        // Titre de la page
-        document.title = `${room.name} - ${room.price}€/nuit | Hostel Paradis`;
+        // Título de la página
+        document.title = `${room.name} - $${room.price.toLocaleString('es-CL')}/noche | Medihouses Hostal República`;
         
         // Meta description
         const metaDescription = document.querySelector('meta[name="description"]');
@@ -26,20 +26,20 @@ function App() {
         
         // Open Graph
         const ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) ogTitle.setAttribute('content', `${room.name} | Hostel Paradis`);
+        if (ogTitle) ogTitle.setAttribute('content', `${room.name} | Medihouses Hostal República`);
         
         const ogDescription = document.querySelector('meta[property="og:description"]');
         if (ogDescription) ogDescription.setAttribute('content', room.descriptionShort);
         
         const ogUrl = document.querySelector('meta[property="og:url"]');
-        if (ogUrl) ogUrl.setAttribute('content', `https://hostal-paradis.netlify.app/room/${room.id}`);
+        if (ogUrl) ogUrl.setAttribute('content', `https://medihouses.netlify.app/room/${room.id}`);
         
         const ogImage = document.querySelector('meta[property="og:image"]');
         if (ogImage) ogImage.setAttribute('content', room.imageUrl);
         
         // Twitter Card
         const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-        if (twitterTitle) twitterTitle.setAttribute('content', `${room.name} | Hostel Paradis`);
+        if (twitterTitle) twitterTitle.setAttribute('content', `${room.name} | Medihouses`);
         
         const twitterDescription = document.querySelector('meta[name="twitter:description"]');
         if (twitterDescription) twitterDescription.setAttribute('content', room.descriptionShort);
@@ -49,25 +49,25 @@ function App() {
         
         // Canonical URL
         const canonical = document.querySelector('link[rel="canonical"]');
-        if (canonical) canonical.setAttribute('href', `https://hostal-paradis.netlify.app/room/${room.id}`);
+        if (canonical) canonical.setAttribute('href', `https://medihouses.netlify.app/room/${room.id}`);
       }
     } else {
-      // Réinitialiser aux valeurs par défaut de la page d'accueil
-      document.title = 'Hostel Paradis - Hébergement de Charme | Chambres Confortables';
+      // Reiniciar a los valores por defecto de la página de inicio
+      document.title = 'Medihouses - Especialistas en Departamentos Amoblados | Hostal República Santiago';
       
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
-        metaDescription.setAttribute('content', 'Découvrez Hostel Paradis, votre havre de paix. Chambres confortables, vue sur jardin, climatisation et Wi-Fi gratuit. Réservez votre séjour dès maintenant à partir de 55€/nuit.');
+        metaDescription.setAttribute('content', 'Descubre Medihouses Hostal República en Santiago, Chile. Habitaciones confortables, wifi gratuito, excelente ubicación. Reserva tu estadía desde $35.000 por noche.');
       }
       
       const ogTitle = document.querySelector('meta[property="og:title"]');
-      if (ogTitle) ogTitle.setAttribute('content', 'Hostel Paradis - Hébergement de Charme');
+      if (ogTitle) ogTitle.setAttribute('content', 'Medihouses - Hostal República Santiago');
       
       const ogUrl = document.querySelector('meta[property="og:url"]');
-      if (ogUrl) ogUrl.setAttribute('content', 'https://hostal-paradis.netlify.app/');
+      if (ogUrl) ogUrl.setAttribute('content', 'https://medihouses.netlify.app/');
       
       const canonical = document.querySelector('link[rel="canonical"]');
-      if (canonical) canonical.setAttribute('href', 'https://hostal-paradis.netlify.app/');
+      if (canonical) canonical.setAttribute('href', 'https://medihouses.netlify.app/');
     }
   };
 

@@ -2,7 +2,8 @@
 import Hero from './Hero';
 import Presentation from './Presentation';
 import RoomsOverview from './RoomsOverview';
-import About from './About';
+import Location from './Location';
+import Testimonials from './Testimonials';
 import Footer from './Footer';
 
 interface HomePageProps {
@@ -15,7 +16,8 @@ export default function HomePage({ onRoomClick }: HomePageProps) {
       <Hero />
       <Presentation />
       <RoomsOverview onRoomClick={onRoomClick} />
-      <About />
+      <Location />
+      <Testimonials />
       <Footer />
     </div>
   );

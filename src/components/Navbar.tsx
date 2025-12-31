@@ -20,28 +20,28 @@ export default function Navbar({ onNavigate }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
-            <Home className="h-8 w-8 text-amber-600" />
-            <span className="ml-2 text-xl font-bold text-gray-800">Hostal Paradis</span>
+            <Home className="h-8 w-8 text-red-600" />
+            <span className="ml-2 text-xl font-bold text-gray-800">Medihouses</span>
           </div>
 
           <div className="hidden md:flex space-x-8">
-            <button onClick={() => scrollToSection('hero')} className="text-gray-700 hover:text-amber-600 transition-colors">
-              Accueil
+            <button onClick={() => scrollToSection('hero')} className="text-gray-700 hover:text-red-600 transition-colors">
+              Inicio
             </button>
-            <button onClick={() => scrollToSection('rooms')} className="text-gray-700 hover:text-amber-600 transition-colors">
-              Chambres
+            <button onClick={() => scrollToSection('rooms')} className="text-gray-700 hover:text-red-600 transition-colors">
+              Habitaciones
             </button>
-            <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-amber-600 transition-colors">
-              À Propos
+            <button onClick={() => scrollToSection('location')} className="text-gray-700 hover:text-red-600 transition-colors">
+              Ubicación
             </button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-amber-600 transition-colors">
-              Contact
+            <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-red-600 transition-colors">
+              Contacto
             </button>
           </div>
 
           <div className="md:hidden flex items-center">
-            <button onClick={() => scrollToSection('rooms')} className="text-gray-700 hover:text-amber-600">
-              Menu
+            <button onClick={() => scrollToSection('rooms')} className="text-gray-700 hover:text-red-600">
+              Menú
             </button>
           </div>
         </div>
