@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import RoomDetail from './components/RoomDetail';
+import WhatsAppButton from './components/WhatsAppButton';
 import { rooms } from './data/rooms';
 
 type View = 'home' | 'room-detail';
@@ -10,12 +11,12 @@ function App() {
   const [currentView, setCurrentView] = useState<View>('home');
   const [selectedRoomId, setSelectedRoomId] = useState<number | null>(null);
 
-  // Función para actualizar los meta tags SEO
+  // Fonction pour actualiser les meta tags SEO
   const updateMetaTags = (roomId: number | null) => {
     if (roomId) {
       const room = rooms.find((r) => r.id === roomId);
       if (room) {
-        // Título de la página
+        // Titre de la página
         document.title = `${room.name} - $${room.price.toLocaleString('es-CL')}/noche | Medihouses Hostal República`;
         
         // Meta description
@@ -118,7 +119,10 @@ function App() {
       <Navbar onNavigate={handleNavigate} />
       {currentView === 'home' && <HomePage onRoomClick={handleRoomClick} />}
       {currentView === 'room-detail' && selectedRoomId && (
-        <RoomDetail roomId={selectedRoomId} onBack={handleBackToHome} />
+        <>
+          <RoomDetail roomId={selectedRoomId} onBack={handleBackToHome} />
+          <WhatsAppButton />
+        </>
       )}
     </div>
   );

@@ -20,8 +20,11 @@ export default function Navbar({ onNavigate }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
-            <Home className="h-8 w-8 text-red-600" />
-            <span className="ml-2 text-xl font-bold text-gray-800">Medihouses</span>
+            <img 
+              src="/Logo1.jpeg" 
+              alt="Medihouses Logo" 
+              className="h-16 w-auto"
+            />
           </div>
 
           <div className="hidden md:flex space-x-8">
@@ -30,6 +33,9 @@ export default function Navbar({ onNavigate }: NavbarProps) {
             </button>
             <button onClick={() => scrollToSection('rooms')} className="text-gray-700 hover:text-red-600 transition-colors">
               Habitaciones
+            </button>
+            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-red-600 transition-colors">
+              Galería
             </button>
             <button onClick={() => scrollToSection('location')} className="text-gray-700 hover:text-red-600 transition-colors">
               Ubicación
